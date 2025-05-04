@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Listings</title>
+  <style>
+    .car-listing {
+      border: 1px solid #ccc;
+      margin: 10px;
+      padding: 10px;
+      display: inline-block;
+      width: 300px;
+      vertical-align: top;
+    }
+    .car-listing img {
+      width: 100%;
+      height: auto;
+    }
+    .car-info {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Cars</h1>
+  <div id="car-container"></div>
+  <script>
+    const cars = [
+      {
+        model: "2019 Honda Civic",
+        mileage: "30,000 km",
+        price: 15000,
+        type: "Used",
+        image: "images/honda-civic-2019.jpg"
+      },
+      {
+        model: "2020 Toyota Corolla",
+        mileage: "25,000 km",
+        price: 16500,
+        type: "Used",
+        image: "images/toyota-corolla-2020.jpg"
+      },
+      {
+        model: "2016 Toyota Prado TX (White)",
+        mileage: "86,000 km",
+        price: 15500000,
+        type: "Used",
+        image: "images/prado-tx-2016-white.jpg"
+      },
+      {
+        model: "2016 Toyota Prado TX (Black)",
+        mileage: "77,000 km",
+        price: 15900000,
+        type: "Used",
+        image: "images/prado-tx-2016-black.jpg"
+      },
+      {
+        model: "2016 Toyota Land Cruiser ZX (Black)",
+        mileage: "92,000 km",
+        price: 27800000,
+        type: "Used",
+        image: "images/landcruiser-zx-2016-black.jpg"
+      },
+      {
+        model: "2017 Toyota Prado TXL (White Pearl)",
+        mileage: "78,000 km",
+        price: 18500000,
+        type: "Used",
+        image: "images/prado-txl-2017-white.jpg"
+      },
+      {
+        model: "2016 Toyota Land Cruiser ZX (White Pearl)",
+        mileage: "78,000 km",
+        price: 28000000,
+        type: "Used",
+        image: "images/landcruiser-zx-2016-white.jpg"
+      },
+      {
+        model: "Mazda Axela",
+        mileage: "40,000 km",
+        price: 12000,
+        type: "Used",
+        image: "images/mazda-axela.jpg"
+      }
+    ];
+
+    function renderCars() {
+      const container = document.getElementById("car-container");
+      container.innerHTML = "";
+      cars.forEach(car => {
+        const div = document.createElement("div");
+        div.className = "car-listing";
+        div.innerHTML = `
+          <img src="\${car.image}" alt="\${car.model}" onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';">
+          <div class="car-info">
+            <h3>\${car.model}</h3>
+            <p>Mileage: \${car.mileage}</p>
+            <p>Price: PKR \${car.price.toLocaleString()}</p>
+            <p>Condition: \${car.type}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCars);
+  </script>
+</body>
+</html>
